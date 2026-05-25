@@ -1,10 +1,9 @@
-require("dotenv").config();
+import "dotenv/config";
+import express, { Express } from "express";
+import telegramRoutes from "./routes/telegram";
+import { sendTelegramMessage } from "./services/telegram.service";
 
-const express = require("express");
-
-const telegramRoutes = require("./routes/telegram");
-
-const app = express();
+const app: Express = express();
 
 app.use(express.json());
 
@@ -15,9 +14,7 @@ app.listen(4040, () => {
   sendTestMessage();
 });
 
-async function sendTestMessage() {
-  const { sendTelegramMessage } = require("./services/telegram.service");
-
+async function sendTestMessage(): Promise<void> {
   const htmlMessage = `
   <b>Hello <i>Rajesh</i>  👋</b>
 You are successfully onboarded 👍
@@ -29,8 +26,8 @@ Your order has been <u>successfully placed</u>.
 
 <a href="https://example.com">View Order</a>
 `;
-  await sendTelegramMessage("7443019493", htmlMessage); //7443019493 = mohsin
+  // await sendTelegramMessage("7443019493", htmlMessage); //7443019493 = mohsin
   // await sendTelegramMessage("1392132707", htmlMessage); //1392132707 = rashee
   // await sendTelegramMessage("1057925473", htmlMessage); //1057925473 = vaibhav
-  // await sendTelegramMessage("8730608762", htmlMessage); //8730608762 = Rajesh
+  await sendTelegramMessage("8730608762", htmlMessage); //8730608762 = Rajesh
 }
