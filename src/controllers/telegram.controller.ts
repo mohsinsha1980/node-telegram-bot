@@ -5,8 +5,6 @@ async function telegramWebhook(req: Request, res: Response): Promise<void> {
   try {
     const message = req.body.message;
 
-    console.log("Telegram Webhook hit:", req.body);
-
     if (!message || !message.text) {
       res.sendStatus(200);
       return;
@@ -16,19 +14,19 @@ async function telegramWebhook(req: Request, res: Response): Promise<void> {
     const telegramUserId = message.from.id;
     const text = message.text;
 
-    const start = text.split(" ")[0];
-    const id = text.split(" ")[1];
-
+    console.log("telegramUserId:", telegramUserId);
     console.log("Received:", text);
 
     // IMPORTANT:
     // Save chatId against logged-in user
 
-    console.log("start ", start);
-    console.log("id ", id); // this could be the user id
-
-    if (start === "/start") {
-      await sendTelegramMessage(chatId, "✅ Telegram connected successfully");
+    if (text === "/start") {
+      await sendTelegramMessage(
+        chatId,
+        "✅ You are connected to TableAndFork bot successfully",
+      );
+    } else {
+      await sendTelegramMessage(chatId, "You said: " + text);
     }
 
     res.sendStatus(200);

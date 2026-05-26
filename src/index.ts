@@ -16,7 +16,7 @@ app.listen(4040, () => {
 
 async function sendTestMessage(): Promise<void> {
   const htmlMessage = `
-  <b>Hello <i>Mohsin</i>  👋</b>
+<b>Hello <i>Mohsin</i>  👋</b>
 You are successfully onboarded 👍
 
 Your order has been <u>successfully placed</u>.

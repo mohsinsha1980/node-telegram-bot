@@ -11,7 +11,7 @@
    Keep the API token safe in the env file
 
 3. Onboard a user
-   Send a link to a user to onboard him/her (e.g. https://t.me/<YOUR_BOT_NAME_bot>?start=<END_USER_ID>)
+   Send a link to a user to onboard him/her (e.g. https://t.me/tablenscale_bot?start)
    Once user clicks this link the connection will be establish between the bot and the user.
    After that an object will be received in the controller which will have chat.id property.
    This chat.id is the identifier of the user where you can send notifications later
